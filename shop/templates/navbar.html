@@ -1,0 +1,217 @@
+{% load static %}
+{% load auth_extras %}
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #0F1221; padding-right: 5rem;">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src="{% static 'images/Logo.jpeg' %}" alt="JD FightStore Logo" class="navbar-logo">
+        </a>
+        <form class="d-flex mx-auto search_bar" action="{% url 'search_app:searchResult' %}" method="get">
+            <input class="form-control form-control-lg me-2" type="search" placeholder="Search" aria-label="Search"
+                name="q">
+            <button class="btn btn-danger search_button" type="submit">Search</button>
+        </form>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            {% if user.is_authenticated %}
+            <ul class="nav navbar-nav">
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        Hi, {{user.username}}! <br>
+                        <span class="bold-text"><strong>Manage Account</strong></span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <a href="{% url 'password_change'%}" class="dropdown-item">Change Password</a>
+                        <a href="{% url 'transaction:transactions_history' %}" class="dropdown-item">Order History</a>
+                        <!--  New stuff -->
+                        <a href="{% url 'logout' %}" class="dropdown-item">Logout</a>
+                        {% if user|has_group:"Manager" %}
+                        <a href="{% url 'shop:stock_create' %}" class="dropdown-item">Add new Stock</a>
+                        {% endif %}
+                    </div>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'cart:cart_detail' %}"><i class="fas fa-shopping-cart">
+                            ({{item_count}})</i></a>
+                </li>
+            </ul>
+        </div>
+        {% else %}
+        <ul class="nav navbar-nav">
+            <li class="nav-item">
+                <form class="form-inline">
+                    <a href="{% url 'login' %}" class="btn btn-outline-danger">
+                        Log In</a>
+                    <a href="{% url 'signup' %}" class="btn btn-danger ml-2 btn-signup">
+                        Sign up</a>
+                </form>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'cart:cart_detail' %}"><i class="fas fa-shopping-cart">
+                        ({{item_count}})</i></a>
+            </li>
+        </ul>
+        {% endif %}
+    </div>
+    </div>
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-dark justify-content-center" style="background-color: #2B2F3E; padding-right: 5rem;">
+    <ul class="navbar-nav mb-1 mb-lg-0">
+        <li><a href="{% url 'shop:all_stocks' %}">All Inventory</a></li>
+        {% for cat in links %}
+        <li><a href="{{ cat.get_absolute_url }}">{{cat.name}}</a></li>
+        {% endfor %}
+    </ul>
+</nav>
+
+
+<style>
+    .horizontal-list {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .horizontal-list li {
+        margin: 0 55px;
+        font-size: 12px;
+    }
+
+    .horizontal-list li a {
+        text-decoration: none;
+        color: white;
+        transition: color 0.3s;
+    }
+
+    .horizontal-list li a:hover {
+        color: red;
+    }
+
+    .navbar-nav li {
+        display: inline;
+        margin-right: 20px;
+    }
+
+    .navbar-nav a {
+        text-decoration: none;
+        color: white;
+    }
+
+
+
+    .search_bar {
+        padding-left: 2em;
+    }
+
+    .navbar-logo {
+        width: 150px;
+        height: auto;
+    }
+
+    .form-control.me-2 {
+        padding-left: 1em;
+        width: 900px;
+    }
+
+    .search_button:hover {
+        background-color: transparent;
+        border-color: red;
+        color: red;
+    }
+
+    .btn-signup {
+        color: rgb(15, 18, 33);
+        font-weight: 500;
+        transition: color 0.3s, background-color 0.3s;
+    }
+
+    .btn-signup:hover {
+        color: red;
+        background-color: transparent;
+        border-color: red;
+    }
+
+    .bold-text strong {
+        font-weight: bold;
+    }
+
+    .search_bar input.form-control-lg {
+        width: 900px;
+    }
+
+    @media (max-width: 1500px) {
+        .search_bar input.form-control-lg {
+            width: 800px;
+        }
+    }
+
+    @media (max-width: 1400px) {
+        .search_bar input.form-control-lg {
+            width: 700px;
+        }
+    }
+
+    @media (max-width: 1300px) {
+        .search_bar input.form-control-lg {
+            width: 600px;
+        }
+    }
+
+    @media (max-width: 1200px) {
+        .search_bar input.form-control-lg {
+            width: 400px;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .search_bar input.form-control-lg {
+            width: 400px;
+        }
+    }
+
+    @media (max-width: 860px) {
+        .search_bar input.form-control-lg {
+            width: 250px;
+        }
+    }
+
+    @media (max-width: 760px) {
+        .navbar-logo {
+            width: 100px;
+            height: auto;
+            padding: 0;
+        }
+
+        .search_bar input.form-control-lg {
+            width: 250px;
+            font-size: 12px;
+            padding: 5px;
+        }
+    }
+
+    @media (max-width: 660px) {
+        .search_bar input.form-control-lg {
+            width: 180px;
+            font-size: 12px;
+            padding: 5px;
+        }
+    }
+
+    @media (max-width: 575px) {
+        .search_bar input.form-control-lg {
+            width: 90px;
+            font-size: 12px;
+            padding: 5px;
+        }
+    }
+</style>

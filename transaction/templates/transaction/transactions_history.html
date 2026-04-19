@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Transaction History - DJ FightStore
+{% endblock %}
+{% block content %}
+<div>
+    <div class="text-center">
+        <br>
+        <h1 class="text-center my_title">Transaction History</h1>
+        <br>
+        {% if transaction_details %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Transaction Number</th>
+                    <th>Transaction Date</th>
+                    <th>Total Amount</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaction in transaction_details %}
+                <tr>
+                    <td>{{ transaction.id }}</td>
+                    <td>{{ transaction.created|date:"d M Y" }}</td>
+                    <td>{{ transaction.total }}</td>
+                    <td><i class="fas fa-check"></i>&nbsp;Complete</td>
+                    <td><a href="{% url 'transaction:transaction_detail' transaction.id %}" class="btn btn-success search_button" role="button">View transaction</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>You have not placed any orders yet.<br><br><a href="{% url 'shop:all_stocks' %}"
+                class="btn btn-secondary">Continue shopping</a></p>
+        {% endif %}
+    </div>
+</div>
+<br>
+<br>
+
+<style>
+    .btn-success:hover {
+    background-color: white;
+    border-color: green;
+    font: bolder;
+    color: green; 
+}
+
+</style>
+
+{% endblock %}

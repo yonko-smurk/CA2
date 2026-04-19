@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Thanks - DJ FightStore
+{% endblock %}
+{% block content %}
+<div>
+    <div class="text-center">
+        <br>
+        <br>
+        <h1 class="text-center my_title">
+            Thanks, your transaction was successfully received
+        </h1>
+        <br>
+        <br>
+        <p>Your transaction number is: <b>{{ customer_transaction.id }}</b></p>
+        <br>
+        <p>
+            We have received and will begin processing your transaction right
+            away. For your records, an email confirmation has been sent to
+            you. It contains details of the items you purchased.
+        </p>
+    </div>
+</div>
+<br>
+<br>
+{% endblock %}

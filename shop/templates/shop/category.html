@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% load static %}
+{% block metadescription %}
+{% if category %}
+{{ category.description|truncatewords:155 }}
+{% else %}
+Welcome to DJ FightStore where we sell the highest quality gear Nation Wide.
+{% endif %}
+{% endblock %}
+{% block title %}
+{% if category %}
+{{ category.name }} - DJ FightStore
+{% else %}
+See Our Fight Store Collection
+{% endif %}
+{% endblock %}
+{% block content %}
+{% if category %}
+<link rel="stylesheet" href="static/css/cus">
+<div>
+    <div>
+        <p><a href="{% url 'shop:all_stocks' %}">Our Stock Collection</a> | {{category.name}}</p>
+    </div>
+</div>
+<div>
+    <img src="{{category.image.url}}" alt="{{category.name}}">
+</div>
+<br>
+<div>
+    <h1>{{category.name}}</h1>
+    <p>{{category.description}}</p>
+</div>
+{% else %}
+<div>
+    <img class="img-position" src="{% static 'images/displayLogo.jpg' %}" alt="Our FightStore Collection">
+</div>
+<br>
+<div>
+    <h1>Our FightStore Collection</h1>
+    <p>
+        Welcome to our world of combat excellence, where each collection is crafted to elevate your martial arts
+        journey. Dive into our extensive range, starting with the ProFit Boxing Gloves – the epitome of strength and
+        style. Transition seamlessly to our Kickboxing Shin Guard Collection, shielding your shins with the perfect
+        balance of protection and flexibility. Embrace the art of Brazilian Jiu-Jitsu with our precision-crafted BJJ Gi
+        Collection, offering durability, comfort, and style for every roll. Step into the ring or onto the mat with
+        confidence in our versatile Boxing and Wrestling Boots – a fusion of support and agility. Complete your combat
+        ensemble with our Fight Accessories, ensuring you have the essentials for success, from hand wraps to headbands.
+    </p>
+</div>
+{% endif %}
+<div class="row">
+    {% for stock in stks %}
+    <div class="col-md-4">
+        <div>
+            <div>
+                {% if stock.image %}
+                <a class="img" href="{{stock.get_absolute_url}}"><img src="{{stock.image.url}}" alt="{{stock.name}}"></a>
+                {% endif %}
+                <div>
+                    <h4>{{stock.name}}</h4>
+                    <p>€{{stock.price}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div class="mx-auto">
+
+    {% if stks.paginator.num_pages > 1 %}
+
+        <hr>
+
+        <div class="text-center">
+
+            {% for pg in stks.paginator.page_range %}
+
+                <a href="?page={{pg}}" class="btn btn-light btn-sm {%
+
+                if stks.number == pg %}active{% endif
+
+                %}">{{pg}}</a>
+
+            {% endfor %}
+
+        </div>
+    {% endif %}
+</div>
+<br>
+
+<style>
+    .img-position {
+        display: block;
+        margin: 0 auto; /* Centers the image */
+        width: 80%; /* Sets the width to 80% of the screen */
+        height: 30%;
+        max-width: 100%; /* Ensures the image doesn't exceed its original size */
+    }
+</style>
+
+{% endblock %}

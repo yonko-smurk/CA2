@@ -1,0 +1,9 @@
+{% endblock %}
+{% block content %}
+<div class="row my_prod_row_class">
+    <div class="mx-auto">
+        <p><a href="{% url 'shop:all_stock' %}">Home</a> | <a href="{{ stock.category.get_url }}">{{stock.category}}</a> | {{stock.name}}</p>
+    </div>
+    <div class="container">
+        <br>
+        <div class="row">
