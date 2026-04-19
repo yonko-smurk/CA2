@@ -3,28 +3,6 @@
 
 An e-commerce web application for buying fighting/combat video games across platforms like PSN and XBOX. Built with Django as a group project.
 
-## Screenshots
-
-![HomePage](https://github.com/user-attachments/assets/9f05ea3f-662d-45f0-a490-4e21e22117d9)
-
-![ProductDetails](https://github.com/user-attachments/assets/940afbd8-7202-4657-a15b-1699523108bd)
-
-![PSN](https://github.com/user-attachments/assets/aa63b81a-b96e-45be-b8bb-980586b01921)
-
-![XBOX](https://github.com/user-attachments/assets/df8bf0b8-257b-4944-bdce-3390a1683c5e)
-
-![Transaction](https://github.com/user-attachments/assets/78c21177-6d4b-4f37-951a-a58948d8ff7f)
-
-![TransactionDetail](https://github.com/user-attachments/assets/ec98ce88-234a-4609-9d05-ffaa90e0db8b)
-
-![Reviews](https://github.com/user-attachments/assets/386cbae9-7943-4158-b07a-b244e611d582)
-
-![Wishlist](https://github.com/user-attachments/assets/ed353ade-2e43-400d-a39e-7fd43d1d02b7)
-
-![Wishlist2](https://github.com/user-attachments/assets/e7fd271a-d0eb-4645-b736-651516f99904)
-
----
-
 ## About the Project
 
 This was a **group project**. The application allows users to browse a catalogue of fighting games, search for products, add them to a session-based shopping cart, apply voucher codes for discounts, and complete purchases via Stripe.
@@ -109,3 +87,26 @@ python manage.py runserver
 - Creating **custom template tags** to check user group membership for role-based access control
 - Structuring a multi-app Django project with proper URL namespacing and separation of concerns
 - Collaborating on a **group project** — coordinating features, avoiding merge conflicts, and integrating independently built apps into a single working application
+
+
+## Screenshots
+
+![HomePage](https://github.com/user-attachments/assets/9f05ea3f-662d-45f0-a490-4e21e22117d9)
+
+![ProductDetails](https://github.com/user-attachments/assets/940afbd8-7202-4657-a15b-1699523108bd)
+
+![PSN](https://github.com/user-attachments/assets/aa63b81a-b96e-45be-b8bb-980586b01921)
+
+![XBOX](https://github.com/user-attachments/assets/df8bf0b8-257b-4944-bdce-3390a1683c5e)
+
+![Transaction](https://github.com/user-attachments/assets/78c21177-6d4b-4f37-951a-a58948d8ff7f)
+
+![TransactionDetail](https://github.com/user-attachments/assets/ec98ce88-234a-4609-9d05-ffaa90e0db8b)
+
+![Reviews](https://github.com/user-attachments/assets/386cbae9-7943-4158-b07a-b244e611d582)
+
+![Wishlist](https://github.com/user-attachments/assets/ed353ade-2e43-400d-a39e-7fd43d1d02b7)
+
+![Wishlist2](https://github.com/user-attachments/assets/e7fd271a-d0eb-4645-b736-651516f99904)
+
+---
