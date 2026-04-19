@@ -14,6 +14,7 @@ The features I was responsible for building:
 - **Products** — Product catalogue with category filtering, product detail pages, pagination, and the staff-only "Add New Stock" feature
 - **Search** — Full-text search across product names and descriptions with filtered results
 - **Stripe Payment Integration** — Secure checkout flow using the Stripe API for processing payments, creating customers, and handling charges
+- **Styling** — CSS styling and layout across the site using Bootstrap 5 and custom CSS
 
 ---
 
